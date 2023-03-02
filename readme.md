@@ -1,82 +1,60 @@
-# start-fastapi 帮助文档
-
-<p align="center" class="flex justify-center">
-    <a href="https://www.serverless-devs.com" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-fastapi&type=packageType">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-fastapi" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-fastapi&type=packageVersion">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-fastapi" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-fastapi&type=packageDownload">
-  </a>
-</p>
-
-<description>
-
-FastAPI是一个现代、快速（高性能）的 Web 框架，基于标准的 Python 语言编写
-
-</description>
-
-<table>
-
-## 前期准备
-使用该项目，推荐您拥有以下的产品权限 / 策略：
-
-| 服务/业务 | 函数计算 |     
-| --- |  --- |   
-| 权限/策略 | AliyunFCFullAccess |  
-
-</table>
-
-<codepre id="codepre">
-
-# 代码 & 预览
-
-- [ :smiley_cat:  源代码](https://github.com/devsapp/start-web-framework/blob/master/web-framework/python/fastapi)
-
-</codepre>
-
-<deploy>
-
-## 部署 & 体验
-
-<appcenter>
-
--  :fire:  通过 [Serverless 应用中心](https://fcnext.console.aliyun.com/applications/create?template=start-fastapi) ，
-[![Deploy with Severless Devs](https://img.alicdn.com/imgextra/i1/O1CN01w5RFbX1v45s8TIXPz_!!6000000006118-55-tps-95-28.svg)](https://fcnext.console.aliyun.com/applications/create?template=start-fastapi)  该应用。 
-
-</appcenter>
-
-- 通过 [Serverless Devs Cli](https://www.serverless-devs.com/serverless-devs/install) 进行部署：
-    - [安装 Serverless Devs Cli 开发者工具](https://www.serverless-devs.com/serverless-devs/install) ，并进行[授权信息配置](https://www.serverless-devs.com/fc/config) ；
-    - 初始化项目：`s init start-fastapi -d start-fastapi`   
-    - 进入项目，并进行项目部署：`cd start-fastapi && s deploy -y`
-
-</deploy>
-
-<appdetail id="flushContent">
-
-# 应用详情
+# Gpt-Turbo
 
 
-本应用仅作为学习和参考使用，您可以基于本项目进行二次开发和完善，实现自己的业务逻辑
+基于 fastapi 的 gpt-3.5-turbo 项目, 用于快速部署,方便API请求调试，来执行以下操作：
+
+- 起草电子邮件或其他书面文件
+- 编写 Python 代码
+- 回答有关一组文件的问题
+- 创建会话代理
+- 为您的软件提供自然语言界面
+- 一系列科目的导师
+- 翻译语言
+- 模拟视频游戏中的角色等等
+
+## 请求示例
+
+请求
+```bash
+curl -X 'GET' \
+  'http://127.0.0.1:9000/?api_key=OpenAi API 密钥&user_content=%E4%BB%80%E4%B9%88%E6%98%AFBERT' \
+  -H 'accept: application/json'
+```
+
+响应
+```json
+{
+  "id": "chatcmpl-6pUTqNeTo7ZajPBrzIcEPF4D2p1hd",
+  "object": "chat.completion",
+  "created": 1677729914,
+  "model": "gpt-3.5-turbo-0301",
+  "usage": {
+    "prompt_tokens": 22,
+    "completion_tokens": 203,
+    "total_tokens": 225
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "BERT是Bidirectional Encoder Representations from Transformers的缩写，是一种基于Transformer结构的深度双向预训练语言模型的代表性模型。它是由Google提出的，继承了Transformer的自注意力机制，通过预训练将大量的文本数据编码成向量表示，并通过Fine-tune的方式适应于各种下游任务，如文本分类、情感分析、问答系统等。BERT支持双向处理文本上下文，可以更好地理解上下文信息，从而提高了NLP任务的准确性。BERT的出现引起了自然语言处理领域的极大关注，并成为了语言模型的研究热点之一。"
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
+```
 
 
-</appdetail>
+## 参数解释
 
-<devgroup>
+聊天模型将一系列消息作为输入，并返回模型生成的消息作为输出。
 
-## 开发者社区
+主要输入是消息参数。消息必须是一组消息对象，其中每个对象都有一个角色（“系统”、“用户”或“助手”）和内容（消息的内容）
 
-您如果有关于错误的反馈或者未来的期待，您可以在 [Serverless Devs repo Issues](https://github.com/serverless-devs/serverless-devs/issues) 中进行反馈和交流。如果您想要加入我们的讨论组或者了解 FC 组件的最新动态，您可以通过以下渠道进行：
+- api_key  OpenAi API 密钥
+- user_content  用户消息有助于指导助手
+- system_content 系统消息有助于设置助手的行为
+- assistant_content 助手消息帮助存储先前的响应_
 
-<p align="center">
-
-| <img src="https://serverless-article-picture.oss-cn-hangzhou.aliyuncs.com/1635407298906_20211028074819117230.png" width="130px" > | <img src="https://serverless-article-picture.oss-cn-hangzhou.aliyuncs.com/1635407044136_20211028074404326599.png" width="130px" > | <img src="https://serverless-article-picture.oss-cn-hangzhou.aliyuncs.com/1635407252200_20211028074732517533.png" width="130px" > |
-|--- | --- | --- |
-| <center>微信公众号：`serverless`</center> | <center>微信小助手：`xiaojiangwh`</center> | <center>钉钉交流群：`33947367`</center> | 
-
-</p>
-
-</devgroup>
