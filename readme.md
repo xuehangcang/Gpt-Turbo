@@ -14,37 +14,43 @@
 
 ## 请求示例
 
-请求
-```bash
-curl -X 'GET' \
-  'http://127.0.0.1:9000/?api_key=OpenAi API 密钥&user_content=%E4%BB%80%E4%B9%88%E6%98%AFBERT' \
-  -H 'accept: application/json'
+```python
+
+import requests
+
+params = {
+    "api_key": "OpenAi API 密钥",  # https://platform.openai.com/
+    "user_content": " Python 编程语言编写一道程序题",
+}
+r = requests.get("https://gptturbo.top", params=params)
+print(r.json())
+
+"""
+{
+    'id': 'chatcmpl-6pVJffpbAwOm0Isf8McQ9JPLB43Ds',
+    'object': 'chat.completion',
+    'created': 1677733127,
+    'model': 'gpt-3.5-turbo-0301',
+    'usage': {
+        'prompt_tokens': 29,
+        'completion_tokens': 295,
+        'total_tokens': 324
+    },
+    'choices': [
+        {
+            'message': {
+                'role': 'assistant',
+                'content': '题目：\n\n编写一个程序，对于用户输入的一段文本，统计其中单词出现的次数并输出出现次数最多的前 5 个单词及其出现次数。\n\n要求：\n\n1. 仅考虑英文单词，多个单词之间以空格或者标点符号分隔。\n\n2. 对于大小写不同但拼写相同的单词，算作同一个单词。\n\n3. 输出结果按照单词出现的次数从大到小排序。\n\n4. 仅考虑该文本中出现频率最高的前 5 个不同单词。\n\n示例：\n\n输入：hello world, my name is John. I love programming very much. Python is my favorite language.\n\n输出：\n\n1. my: 2\n2. is: 1\n3. name: 1\n4. world: 1\n5. love: 1\n\n解释：\n\n单词 my 出现了 2 次，是出现次数最多的单词；其他出现次数相同的单词名次由字典序决定，例如 is 名次排在 name 前面。'
+            },
+            'finish_reason': 'stop',
+            'index': 0
+        }
+    ]
+}
+
+"""
 ```
 
-响应
-```json
-{
-  "id": "chatcmpl-6pUTqNeTo7ZajPBrzIcEPF4D2p1hd",
-  "object": "chat.completion",
-  "created": 1677729914,
-  "model": "gpt-3.5-turbo-0301",
-  "usage": {
-    "prompt_tokens": 22,
-    "completion_tokens": 203,
-    "total_tokens": 225
-  },
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "BERT是Bidirectional Encoder Representations from Transformers的缩写，是一种基于Transformer结构的深度双向预训练语言模型的代表性模型。它是由Google提出的，继承了Transformer的自注意力机制，通过预训练将大量的文本数据编码成向量表示，并通过Fine-tune的方式适应于各种下游任务，如文本分类、情感分析、问答系统等。BERT支持双向处理文本上下文，可以更好地理解上下文信息，从而提高了NLP任务的准确性。BERT的出现引起了自然语言处理领域的极大关注，并成为了语言模型的研究热点之一。"
-      },
-      "finish_reason": "stop",
-      "index": 0
-    }
-  ]
-}
-```
 
 
 ## 参数解释
