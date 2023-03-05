@@ -9,8 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
+    "https://gptturbo.top",
     "http://localhost",
     "http://localhost:9000",
 ]
@@ -52,4 +51,5 @@ async def submit_form(request: Request, user_content: str = Form(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("index:app", host="0.0.0.0", port=9000, reload=True)
+    uvicorn.run("index:app", host="0.0.0.0", port=9000, reload=True, ssl_keyfile="9397960.key",
+                ssl_certfile="9397960.pem")
