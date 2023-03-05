@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <title>Gpt-Turbo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', path='/output.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+<div class="py-4"></div>
+
+<div class="container mx-auto px-4">
+    <div class="flex flex-col items-center justify-center h-full">
+        <h1 class="text-4xl font-bold text-gray-900">GPT-Turbo</h1>
+        <p class="text-gray-700">基于 Gpt-3.5-Turbo 的问答系统</p>
+    </div>
+</div>
+<div class="container mx-auto px-4">
+    <form action="{{ url_for('submit_form') }}" method="POST" class="my-8">
+        <label for="user_content" class="block text-gray-700 font-bold mb-2">问题：</label>
+        <input type="text" id="user_content" name="user_content" autocomplete="off"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <input type="submit" value="提交"
+               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+    </form>
+</div>
+</body>
+</html>
