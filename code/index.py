@@ -19,7 +19,7 @@ async def index(request: Request):
 
 @app.post('/submit-form')
 async def submit_form(request: Request, user_content: str = Form(...)):
-    openai.api_key = "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"
+    openai.api_key = "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"
     results = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
