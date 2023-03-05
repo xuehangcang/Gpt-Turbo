@@ -3,3 +3,4 @@ uvicorn
 openai
 jinja2
 python-multipart
+markdown
